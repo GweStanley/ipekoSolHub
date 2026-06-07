@@ -1,0 +1,35 @@
+.footer {
+  background: #111;
+  color: white;
+  padding: 60px;
+  margin-top: 80px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer h2 {
+  margin-bottom: 20px;
+}
+
+.footer p {
+  margin-bottom: 20px;
+  color: #bbb;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #aaa;
+}

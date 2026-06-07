@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+.page {
+  padding: 80px 60px;
+}
+
+.page h1 {
+  font-size: 50px;
+  margin-bottom: 50px;
+}
+
+img {
+  max-width: 100%;
+}
+
+video {
+  width: 100%;
+}
+
+button {
+  transition: 0.3s;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  );
+  gap: 30px;
+}
+
+.highlight-card {
+  border: 1px solid #ddd;
+  overflow: hidden;
+  background: white;
+}
+
+.highlight-card img {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.highlight-card h2 {
+  padding: 20px 20px 10px;
+}
+
+.highlight-card p {
+  padding: 0 20px 20px;
+  color: #555;
+}
+
+.highlight-card strong {
+  display: block;
+  padding: 0 20px 20px;
+}
+
+.highlight-card a {
+  display: inline-block;
+  margin: 0 20px 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  );
+  gap: 30px;
+}
+
+.testimonial-card {
+  border: 1px solid #ddd;
+  padding: 30px;
+}
+
+.testimonial-message {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+.login-page {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+  border: 1px solid #ddd;
+}
+
+.login-page h1 {
+  margin-bottom: 30px;
+}
+
+.login-page input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+}
+
+.login-page button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+@media(max-width: 768px) {
+
+  .navbar {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-content h1 {
+    font-size: 40px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  .page {
+    padding: 40px 20px;
+  }
+
+  .highlights-section {
+    padding: 40px 20px;
+  }
+
+  .dashboard {
+    padding: 20px;
+  }
+  .hero-section {
+  padding-top: 120px;
+}
+
+}
