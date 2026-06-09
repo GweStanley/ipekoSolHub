@@ -2,90 +2,79 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { supabase } from '../../lib/supabase'
-import '../../styles/tasks.css'
+import { supabase } from '../lib/supabase'
+import '../styles/auth.css'
 
 export default function LoginPage() {
 
   const router = useRouter()
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
+  const [loading,setLoading] = useState(false)
+  const [error,setError] = useState('')
 
   async function login() {
 
+    setLoading(true)
     setError('')
 
-    const { data, error: dbError } = await supabase
-      .from('task_users')
-      .select('*')
-      .eq('username', username.trim())
-      .limit(1)
+    const { error } =
+      await supabase.auth.signInWithPassword({
+        email,
+        password
+      })
 
-    if (dbError) {
-      setError('Database error')
+    if(error){
+      setError(error.message)
+      setLoading(false)
       return
     }
 
-    const user = data?.[0]
-
-    if (!user) {
-      setError('User not found')
-      return
-    }
-
-    if (user.password !== password.trim()) {
-      setError('Incorrect password')
-      return
-    }
-
-    localStorage.setItem(
-      'taskUser',
-      JSON.stringify(user)
-    )
-
-    router.push('/tasks/dashboard')
+    router.push('/dashboard')
   }
 
   return (
 
-    <div className="task-login">
+    <div className="auth-page">
 
-      <div className="task-login-card">
+      <div className="auth-card">
 
-        <h1>Task Login</h1>
+        <h1>Admin Login</h1>
+
+        <p>
+          Access Content Management Dashboard
+        </p>
+
+        {error && (
+          <div className="auth-error">
+            {error}
+          </div>
+        )}
 
         <input
-          placeholder="Username"
-          value={username}
-          onChange={(e) =>
-            setUsername(e.target.value)
-          }
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e)=>setEmail(e.target.value)}
         />
 
         <input
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
+          onChange={(e)=>setPassword(e.target.value)}
         />
 
-        {error && (
-          <p style={{ color: 'red' }}>
-            {error}
-          </p>
-        )}
-
-        <button onClick={login}>
-          Login
+        <button
+          onClick={login}
+          disabled={loading}
+        >
+          {loading ? 'Signing In...' : 'Login'}
         </button>
 
       </div>
 
     </div>
-
   )
 }
