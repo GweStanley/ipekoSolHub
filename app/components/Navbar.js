@@ -12,7 +12,7 @@ export default function Navbar() {
     <nav className="navbar">
 
       <div className="logo">
-        iPekosol Business Hub
+        iPekoSol Business Hub
       </div>
 
       <button
